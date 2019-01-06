@@ -35,6 +35,13 @@ export class CategoryService {
       catchError(this.handleError),
       map(() => category));
   }
+
+  delete(id: number): Observable<any>{
+    const url:string = `$(this.apiPath)/$(id)`;
+    return this.http.delete(url).pipe(
+      catchError(this.handleError),
+      map(() => null));
+  }
   //PRIVATES METHODS
 
   private jsonDataToCategories(jsonData: any[]){
